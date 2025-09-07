@@ -7,7 +7,7 @@
 export async function getAllTutors(formData) {
     try {
         const params = new URLSearchParams(formData).toString();
-        const response = await fetch(`http://localhost:3000/api/tutors?${params}`);
+        const response = await fetch(`https://backend-tdp.vercel.app/api/tutors?${params}`);
 
         if (!response.ok) {
             throw new Error("Failed to fetch data!")
@@ -27,7 +27,7 @@ export async function getAllTutors(formData) {
 //-------------------------------------------------------------------------------------------
 export async function addNewTutor(formData) {
     try {
-        const response = await fetch(`http://localhost:3000/api/tutors`, {
+        const response = await fetch(`https://backend-tdp.vercel.app/api/tutors`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(formData)
