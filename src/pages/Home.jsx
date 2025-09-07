@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { toast } from "react-toastify";
-import { getAllTutors } from "../api/getAllTutors";
+import {Link} from "react-router-dom";
+import { getAllTutors } from "../api/data";
 import { statesAndUTs } from "../dataForForm/statesOrUT";
 import {districtsByStates} from "../dataForForm/districtsByStates"
 
@@ -12,7 +13,7 @@ export default function Home() {
     const [error, setError] = useState(null);
     const [country, setCountry] = useState("");
     const [state, setState] = useState("");
-    const [district, setDistrict] = useState("");    
+    const [district, setDistrict] = useState("");
     
     const districtsArray = country && state && districtsByStates && districtsByStates.find(element => (element.state === state))
     // console.log("country:", country)
@@ -27,7 +28,7 @@ export default function Home() {
 
                 if (data.length === 0) {
                     setLoading(false)
-                    setMessage("Data Not Found!")
+                    setMessage(`We could not find any home tutors in ${district} right now. Please check back soon...`)
                     return;
                 }
 
@@ -36,22 +37,17 @@ export default function Home() {
                     setLoading(false)
                     setError(false)
                     setTutorsData(data)
-                } else {
-                    setMessage("Data Not Found!")
                 }
-                // console.log("data:", data)
             }
         } catch (error) {
             setLoading(false);
             setError(true);
         }
-
-             
-
     }
 
     return (
-        <div className="container py-4 ">
+        <div className="container py-2">
+            <Link to="/register-as-a-tutor" className="btn btn-outline-dark btn-sm fw-bold text-center w-100">Get Registered as a Home Tutor</Link>
             <div className="text-center">
             <h1 className="fw-bold display-1">Tutor Directory</h1>
             <div className="row">
@@ -60,7 +56,7 @@ export default function Home() {
                         id="country" 
                         className="form-select"
                         required
-                        defaultValue={country}
+                        value={country}
                         onChange={(event) => setCountry(event.target.value)}
                     >
                         <option value="" disabled>Select Country</option>
@@ -72,7 +68,7 @@ export default function Home() {
                         id="state" 
                         className="form-select"
                         required
-                        defaultValue={state}
+                        value={state}
                         onChange={(event) => setState(event.target.value)}
                     >
                         <option value="" disabled>Select State / Union Territory</option>
@@ -90,7 +86,7 @@ export default function Home() {
                         id="district" 
                         className="form-select"
                         required
-                        defaultValue={district}
+                        value={district}
                         onChange={(event) => setDistrict(event.target.value)}
                     >
                         <option value="" disabled>Select District</option>
