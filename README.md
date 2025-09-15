@@ -6,7 +6,7 @@
 * Home Tutors can **register** by submitting their details via a form.
 
 🔗 **Live URL:** [Tutor Directory](https://tutordirectory.vercel.app/)<br>
-🎥 **Walkthrough:** [Watch here](https://tutordirectory.vercel.app/)
+🎥 **Walkthrough:** [Watch here](https://drive.google.com/drive/folders/1Hh7WilsfZil5iyod2ysEVu06Y7597LV8?usp=sharing)
 
 ## ⚙️ Setup Instructions
 
