@@ -1,12 +1,89 @@
-# React + Vite
+# 📘 Tutor Directory
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Tutor Directory** is a web portal that connects **parents/students** with **home tutors** for FREE.
 
-Currently, two official plugins are available:
+* Students/Parents can **search for tutors** by selecting `Country → State → District`.
+* Home Tutors can **register** by submitting their details via a form.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 **Live URL:** [Tutor Directory](https://tutordirectory.vercel.app/)<br>
+🎥 **Walkthrough:** [Watch here](https://tutordirectory.vercel.app/)
 
-## Expanding the ESLint configuration
+## ⚙️ Setup Instructions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone repo & install dependencies:
+
+```bash
+git clone https://github.com/ravipatelctf/frontend-tdp.git
+cd frontend-tdp
+npm install
+npm run dev
+```
+
+## 🚀 Features
+
+* 🌍 Location-based search (Country → State → District).
+* 📝 Tutor registration with required details.
+* ⚡ Blazingly fast API powered by **Express.js** and **MongoDB**.
+* 🔄 CORS enabled for frontend-backend communication.
+
+## 🛠️ Tech Stack
+
+* **Frontend:** React.js, React Router DOM
+* **Backend:** Express.js, Node.js
+* **Database:** MongoDB (Mongoose ODM)
+* **Other:** CORS, dotenv
+
+## 📂 API References
+
+### ✅ Home Route
+
+`GET /`
+
+* Returns a welcome message:
+
+```json
+"This is tutor directory backend api."
+```
+
+### ✅ Get Tutors by Location
+
+`GET /api/tutors?country=India&stateOrUT=STATE&district=DISTRICT`
+
+* **Query Params (all required):**
+
+  * `country` → e.g. `India`
+  * `stateOrUT` → e.g. `Uttar Pradesh`
+  * `district` → e.g. `Varanasi`
+* **Response:** Returns a list of tutors.
+* **Error:**
+
+  * `400` → Missing query params.
+  * `404` → No tutors found.
+
+### ✅ Add a New Tutor
+
+`POST /api/tutors`
+
+* **Request Body Example:**
+
+```json
+{
+  "name": "Ravi Kumar",
+  "phoneNumber": "9876543210",
+  "country": "India",
+  "stateOrUT": "Uttar Pradesh",
+  "district": "Varanasi",
+  "pincode": "221001",
+  "landmark": "Near BHU"
+}
+```
+
+* **Response:** Returns saved tutor object.
+* **Error:**
+
+  * `400` → Missing fields.
+  * `500` → Failed to create data.
+
+## Contact
+
+For bug reports or feature request please do reachout to me at ravipatelctf@gmail.com
